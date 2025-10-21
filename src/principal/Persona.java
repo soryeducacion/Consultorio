@@ -70,18 +70,26 @@ public class Persona {
 		boolean verificar = true;
 		String mensaje = "";
 		if(telefono.length() >= 10) {
-			mensaje = mensaje + "\n Tiene más de 10 digitos: " + telefono.length();
+			mensaje = mensaje + " \n Tiene más de 10 digitos: " + telefono.length();
 			verificar = false;
 		}else if(telefono.length() <= 10) {
-			mensaje = mensaje + "\n Tiene menos digitos: " + telefono.length();
+			mensaje = mensaje + " \n Tiene menos digitos: " + telefono.length();
 			verificar = false;
 		}
 		
 		if(telefono.isEmpty()) {
-			mensaje = mensaje + "\n deberá estar capturado: " + telefono.length();
+			mensaje = mensaje + " \n deberá estar capturado: " + telefono.length();
 			verificar = false;
 		}
 		
+		//en esta sentencia verificas con el método matches que sean 10 digitos y solo sena numeros
+		// mas conocida como expresion regular / regex
+		//tambien sirve para validar correos o cualquier patron valido en regex
+		if(!telefono.matches("^\\d{10}$")) {
+			mensaje = mensaje + " \n solo pueden ser numeros: " + telefono;
+			verificar = false;
+		}
+
 		
 		if(verificar == false) {
 			
@@ -102,7 +110,7 @@ public class Persona {
 		       
         Paciente paciente = new Paciente();
         
-        System.out.println(persona.verificarTelefono("77777777777777777")); //aqui se verifica el método 
+        System.out.println(persona.verificarTelefono("778888888w")); //aqui se verifica el método 
        
         //System.out.println(paciente.getAtributos());
         int op = 0;
